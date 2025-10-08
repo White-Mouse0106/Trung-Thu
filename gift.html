@@ -6,10 +6,17 @@
   <title>Quà của Bạn</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    :root{
+      --bg1:#120019;
+      --gold:#ffd78a;
+    }
     html,body{
-      height:100%;margin:0;
+      height:100%;
+      margin:0;
       background:radial-gradient(circle at 20% 20%, #2a0038 0%, #040007 70%);
-      font-family:Quicksand,Arial;color:#fff;overflow:hidden;
+      font-family:Quicksand,Arial;
+      color:#fff;
+      overflow:hidden;
     }
 
     .wrap{
@@ -17,7 +24,6 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      flex-direction:column;
       position:relative;
     }
 
@@ -26,89 +32,154 @@
       height:100%;
       position:relative;
       overflow:hidden;
+      display:block;
     }
 
+    /* ảnh dùng <img> để chắc chắn hiển thị */
     .gift-img{
       position:absolute;
       inset:0;
-      background:url('gift.jpg') center/cover no-repeat;
-      filter:brightness(0.95);
+      width:100%;
+      height:100%;
+      object-fit:cover;        /* cover toàn phần */
+      object-position:center;
+      display:block;
+      z-index:0;               /* ảnh nằm dưới */
+      filter:brightness(0.96);
+      transform-origin:center center;
       animation:imgFloat 10s ease-in-out infinite alternate;
     }
-
     @keyframes imgFloat {
-      0% { transform:scale(1) translateY(0); }
-      50% { transform:scale(1.03) translateY(-4px); }
-      100% { transform:scale(1) translateY(0); }
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-6px) scale(1.02); }
+      100% { transform: translateY(0) scale(1); }
     }
 
-    /* 🔥 Dòng chữ lung linh nằm giữa ảnh */
-    .text-anim {
+    /* overlay tối nhẹ để chữ nổi */
+    .overlay-dark{
       position:absolute;
-      bottom:30px;
-      left:50%;
-      transform:translateX(-50%);
-      font-family:'Great Vibes',cursive;
-      font-size:clamp(22px,5vw,34px);
-      color:#ffd78a;
-      text-align:center;
-      text-shadow:0 0 12px rgba(255,230,170,0.9),
-                  0 0 28px rgba(255,220,120,0.6),
-                  0 0 50px rgba(255,240,200,0.3);
-      opacity:0;
-      animation:fadeInText 2s ease 1.2s forwards;
-      z-index:2;
+      inset:0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.06), rgba(0,0,0,0.22));
+      z-index:1;
+      pointer-events:none;
     }
 
-    @keyframes fadeInText {
-      0% { opacity:0; transform:translate(-50%,10px); }
-      100% { opacity:1; transform:translate(-50%,0); }
-    }
-
-    /* nút quay lại */
-    .back{
-      position:absolute;
-      top:8px; left:8px;
-      padding:6px 14px;
-      border-radius:8px;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.2);
-      color:#fff;
-      text-decoration:none;
-      font-size:14px;
-      z-index:3;
-      transition:all .3s;
-    }
-    .back:hover{background:rgba(255,255,255,0.15);}
-
-    /* hiệu ứng ánh sáng di chuyển nhẹ quanh chữ */
+    /* glow di chuyển (dưới chữ) */
     .glow-move{
       position:absolute;
-      width:120px; height:120px;
-      border-radius:50%;
-      background:radial-gradient(circle,rgba(255,230,170,0.25),transparent 70%);
+      width:120px;height:120px;border-radius:50%;
+      background:radial-gradient(circle,rgba(255,230,170,0.18),transparent 60%);
       mix-blend-mode:screen;
-      animation:moveGlow 10s linear infinite;
-      z-index:1;
+      z-index:2;
+      animation:moveGlow 12s linear infinite;
+      pointer-events:none;
     }
     @keyframes moveGlow {
       0%{top:10%;left:10%;}
-      50%{top:70%;left:70%;}
+      50%{top:65%;left:65%;}
       100%{top:10%;left:10%;}
+    }
+
+    /* nút quay lại (visible, ở trên cùng) */
+    .back{
+      position:fixed;
+      top:14px; left:14px;
+      padding:8px 12px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.14);
+      color:#fff;
+      text-decoration:none;
+      font-size:14px;
+      z-index:10;
+      backdrop-filter:blur(4px);
+    }
+
+    /* chữ lung linh */
+    .text-anim {
+      position:fixed;
+      bottom:4vh;
+      left:50%;
+      transform:translateX(-50%);
+      font-family:'Great Vibes',cursive;
+      font-size:clamp(20px,5.5vw,36px);
+      color:var(--gold);
+      text-align:center;
+      text-shadow:
+        0 0 8px rgba(255,220,150,0.9),
+        0 0 20px rgba(255,200,120,0.6),
+        0 4px 28px rgba(0,0,0,0.6);
+      z-index:9;
+      opacity:0;
+      animation:fadeInText .9s ease .6s forwards;
+      pointer-events:none;
+      padding:0 12px;
+    }
+    @keyframes fadeInText {
+      from { opacity:0; transform:translate(-50%,14px) scale(.98); }
+      to   { opacity:1; transform:translate(-50%,0) scale(1); }
+    }
+
+    /* nếu ảnh lỗi thì hiện placeholder message */
+    .image-error{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:5;
+      color:#ffd78a;
+      font-size:18px;
+      background:linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+      text-align:center;
+      padding:20px;
+      display:none;
+    }
+
+    /* responsive tweaks */
+    @media (max-width:420px){
+      .text-anim{font-size:clamp(18px,6.5vw,26px); bottom:6vh}
+      .back{top:8px; left:8px; padding:6px 10px}
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="card">
-      <div class="gift-img"></div>
-      <div class="glow-move"></div>
-      <a class="back" href="index.html">⬅️ Quay lại</a>
+      <!-- dùng thẻ <img> trực tiếp -->
+      <img class="gift-img" id="giftImg" src="gift.jpg" alt="Quà của Bạn">
+
+      <div class="overlay-dark" aria-hidden="true"></div>
+      <div class="glow-move" aria-hidden="true"></div>
+
+      <a class="back" href="index.html" aria-label="Quay lại">⬅️ Quay lại</a>
+
+      <div id="imgError" class="image-error">Không tải được ảnh (gift.jpg). Hãy kiểm tra tên file & đường dẫn.</div>
       <div class="text-anim">✨ Trung Thu này — Gửi đến Bạn món quà nhỏ 💝</div>
     </div>
   </div>
 
-  <!-- Nhạc tự động phát -->
+  <!-- nhạc (lưu ý: mobile có thể chặn autoplay có âm thanh) -->
   <audio id="bgm" src="Anh Sẽ Cho Mình.mp3" autoplay loop></audio>
+
+  <script>
+    // debug: nếu ảnh không load được -> hiển thị message
+    const giftImg = document.getElementById('giftImg');
+    const imgErr = document.getElementById('imgError');
+
+    giftImg.addEventListener('error', () => {
+      console.error('gift.jpg không tìm thấy hoặc lỗi tải.');
+      imgErr.style.display = 'flex';
+      giftImg.style.display = 'none';
+    });
+
+    // optional: thử autoplay âm thanh (mobile thường chặn)
+    const bgm = document.getElementById('bgm');
+    bgm.volume = 0.85;
+    bgm.play().catch(err => {
+      console.warn('Autoplay bị chặn bởi trình duyệt:', err);
+      // có thể hiển thị nút Play nếu cần (không bắt buộc)
+    });
+  </script>
 </body>
 </html>
