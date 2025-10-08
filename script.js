@@ -1,6 +1,29 @@
 window.onload = () => {
-  document.getElementById('loader').style.opacity = '0';
-setTimeout(() => document.getElementById('loader').remove(), 600);
+/* ===== LOADING FADE-IN ===== */
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loading');
+  setTimeout(() => {
+    loader.classList.add('fade-out');
+    setTimeout(() => loader.remove(), 1000);
+
+    // Chỉ bắt đầu tạo hiệu ứng sau khi load xong
+    startScene();
+  }, 1500);
+});
+
+function startScene() {
+  makeStars(60);
+  makeClouds(3);
+  setInterval(spawnLantern, 2200);
+  setInterval(spawnFloatingText, 1200);
+  createFlyingImage('img1.webp');
+  createFlyingImage('img2.webp');
+  createFlyingImage('img3.webp');
+  createFlyingImage('img4.webp');
+  createFlyingImage('img5.webp');
+  setTimeout(startRabbitRun, 4000);
+}
+
 
   /* ===== WISHES ===== */
 const wishes = [
