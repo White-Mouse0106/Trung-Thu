@@ -418,3 +418,21 @@ button{background:transparent;border:none;cursor:pointer}
     }
   }
 }
+
+/* 🌟 Floating small images fade in/out */
+.floating-img {
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: 0 0 18px rgba(255, 200, 255, 0.45);
+  opacity: 0;
+  animation: fadePulse 6s ease-in-out infinite;
+  z-index: 5;
+  pointer-events: none;
+  transition: transform 8s ease, left 8s linear, top 8s linear;
+}
+
+@keyframes fadePulse {
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+

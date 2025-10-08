@@ -94,31 +94,48 @@ function spawnFloatingText(){
 }
 setInterval(spawnFloatingText, 1200);
 
-/* ===== FLOATING IMAGES ===== */
-function createFlyingImage(src){
-  const img=document.createElement('img');
+/* ===== FLOATING IMAGES (fade + mini stars) ===== */
+const floatingImages = [
+  "img1.webp", "img2.webp", "img3.webp", "img4.webp", "img5.webp"
+];
+
+function spawnFloatingImg(src) {
+  const img = document.createElement('img');
   img.src = src;
   img.className = 'floating-img';
-  img.style.width = (80 + Math.random()*110) + 'px';
-  img.style.left = Math.random()*100 + 'vw';
-  img.style.top = Math.random()*80 + 'vh';
+
+  // nhỏ xíu ✨
+  const size = 40 + Math.random() * 35;
+  img.style.width = `${size}px`;
+  img.style.height = 'auto';
+  img.style.left = Math.random() * 100 + 'vw';
+  img.style.top = Math.random() * 100 + 'vh';
+  img.style.animationDelay = Math.random() * 4 + 's';
   document.body.appendChild(img);
-  function move(){
-    const newL = Math.random()*100;
-    const newT = Math.random()*85;
-    const rot = (Math.random()*360-180);
-    const dur = 8000 + Math.random()*12000;
-    img.style.transition = `left ${dur}ms linear, top ${dur}ms linear, transform ${dur}ms ease`;
-    img.style.left = newL + 'vw';
-    img.style.top = newT + 'vh';
-    img.style.transform = `rotate(${rot}deg)`;
-    setTimeout(move, dur+200);
+
+  function randomMove() {
+    const newLeft = Math.random() * 100;
+    const newTop = Math.random() * 100;
+    const rotate = (Math.random() * 60) - 30;
+    img.style.left = newLeft + 'vw';
+    img.style.top = newTop + 'vh';
+    img.style.transform = `rotate(${rotate}deg) scale(${0.8 + Math.random() * 0.4})`;
+    setTimeout(randomMove, 7000 + Math.random() * 4000);
   }
-  move();
-  setTimeout(()=> { if(img.parentNode) img.parentNode.removeChild(img); }, 60000);
+  randomMove();
+
+  // sau 90s tự xóa để tiết kiệm bộ nhớ
+  setTimeout(() => img.remove(), 90000);
 }
-createFlyingImage('img1.webp');
-createFlyingImage('img2.webp');
+
+// tạo 5 ảnh lung linh ngẫu nhiên và lặp lại
+setInterval(() => {
+  floatingImages.forEach(src => spawnFloatingImg(src));
+}, 14000);
+
+// spawn ban đầu
+floatingImages.forEach(src => spawnFloatingImg(src));
+
 
 /* ===== RABBIT RUN (CSS animation) ===== */
 function startRabbitRun() {
