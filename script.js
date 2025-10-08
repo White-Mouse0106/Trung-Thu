@@ -1,14 +1,10 @@
 window.onload = () => {
-/* ===== LOADING FADE-IN ===== */
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loading');
-  setTimeout(() => {
-    loader.classList.add('fade-out');
-    setTimeout(() => loader.remove(), 1000);
-
-    // Chỉ bắt đầu tạo hiệu ứng sau khi load xong
-    startScene();
-  }, 1500);
+window.addEventListener("load", () => {
+  popupOverlay.classList.remove("show");
+  popupOverlay.setAttribute("aria-hidden", "true");
+  envelope.classList.remove("envelope-open");
+  logoBtn.classList.remove("visible");
+  rabbit.style.opacity = 0;
 });
 
 function startScene() {
@@ -176,10 +172,10 @@ function startRabbitRun() {
   });
   rabbit.style.animation = 'rabbitRun 5s linear forwards';
   rabbit.addEventListener('animationend', ()=>{
-    rabbit.animate([{opacity:1},{opacity:0, transform:'scale(.98)'}],
-                   {duration:420,easing:'ease-out',fill:'forwards'});
-    setTimeout(showLogo, 420);
-  }, {once:true});
+  rabbit.animate([{opacity:1},{opacity:0, transform:'scale(.98)'}],
+                 {duration:420,easing:'ease-out',fill:'forwards'});
+  setTimeout(showLogo, 420);
+}, {once:true});
 }
 setTimeout(startRabbitRun, 4000);
 
