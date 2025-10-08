@@ -1,100 +1,72 @@
 <!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Quà của Bạn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-  html,body{
-    height:100%;margin:0;
-    background:radial-gradient(circle at 20% 20%, #2a0038 0%, #040007 70%);
-    font-family:Quicksand,Arial;color:#fff;overflow:hidden
+<style>
+  html,body {
+    height: 100%;
+    margin: 0;
+    background: radial-gradient(circle at 20% 20%, #2a0038 0%, #040007 70%);
+    font-family: Quicksand, Arial;
+    color: #fff;
+    overflow: hidden;
   }
-  .wrap{
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:12px;
+  .wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 12px;
   }
-  .card{
-    position:relative;
-    width:100%;
-    max-width:980px;
-    height:100%;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 20px 80px rgba(0,0,0,0.7);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
+  .card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 0;
+    overflow: hidden;
   }
-  .gift-img{
-    position:absolute;
-    inset:0;
-    background:url('gift.webp') center/cover no-repeat;
-    animation:zoomIn 20s ease-in-out infinite alternate;
+  .gift-img {
+    position: absolute;
+    inset: 0;
+    background: url('gift.jpg') center/cover no-repeat;
+    animation: imgFloat 8s ease-in-out infinite;
   }
-  @keyframes zoomIn{
-    0%{transform:scale(1)}
-    100%{transform:scale(1.08)}
+  @keyframes imgFloat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
   }
-
-  .overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(180deg,rgba(0,0,0,0.15),rgba(0,0,0,0.55));
-    z-index:1;
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
   }
-
-  .text-anim{
-    position:relative;
-    z-index:2;
-    font-family:'Great Vibes',cursive;
-    font-size:34px;
-    color:#ffd78a;
-    text-align:center;
-    text-shadow:0 0 15px rgba(255,220,150,0.9);
-    opacity:0;
-    animation:fadeInText 2s ease 0.8s forwards;
+  .text {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+    color: #ffd78a;
+    text-shadow: 0 0 10px rgba(255,230,150,0.9);
+    animation: fadeIn 2s ease forwards;
   }
-  @keyframes fadeInText{
-    from{opacity:0;transform:translateY(20px);}
-    to{opacity:1;transform:translateY(0);}
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, 20px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
   }
-
-  .back{
-    position:absolute;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:3;
-    padding:10px 20px;
-    border-radius:10px;
-    background:rgba(255,255,255,0.1);
-    border:1px solid rgba(255,255,255,0.2);
-    color:#fff;
-    text-decoration:none;
-    font-size:16px;
-    transition:all .3s;
-  }
-  .back:hover{
-    background:rgba(255,255,255,0.2);
-    transform:translateX(-50%) translateY(-3px);
-  }
-
-  /* 📱 Responsive mobile */
-  @media (max-width:600px){
-    .text-anim{
-      font-size:24px;
-      padding:0 20px;
-    }
-    .back{
-      font-size:14px;
-      bottom:14px;
-    }
+  .back {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
   }
 </style>
 </head>
