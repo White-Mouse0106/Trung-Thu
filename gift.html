@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quà của Bạn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: radial-gradient(circle at 30% 20%, #2b0038 0%, #080018 80%);
+      font-family: 'Quicksand', sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card {
+      position: relative;
+      width: min(900px, 95vw);
+      height: min(80vh, 600px);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(255, 220, 255, 0.3);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    }
+
+    .gift-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* ✅ hiển thị đủ hình, không cắt */
+      border-radius: 16px;
+      animation: fadeIn 1.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(1.02); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .title {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ffd78a;
+      font-size: 28px;
+      font-family: 'Great Vibes', cursive;
+      text-shadow: 0 0 18px rgba(255, 220, 150, 0.9);
+    }
+
+    .text-anim {
+      margin-top: 24px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 34px;
+      color: #ffd78a;
+      text-shadow: 0 0 25px rgba(255, 230, 170, 0.7);
+      opacity: 0;
+      animation: showText 2s ease 0.6s forwards;
+    }
+
+    @keyframes showText {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .back {
+      margin-top: 24px;
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="title">Món quà dành riêng cho Bạn</div>
+      <img src="gift.jpg" alt="Món quà Trung Thu" class="gift-img">
+    </div>
+    <div class="text-anim">✨ Trung Thu này — Gửi đến Bạn món quà nhỏ 💝</div>
+    <a href="index.html" class="back">⬅️ Quay lại</a>
+  </div>
+</body>
+</html>

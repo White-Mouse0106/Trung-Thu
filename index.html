@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trung Thu Galaxy — Dành cho Bạn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="sceneWrapper">
+    <div id="container" role="main" aria-label="Lời chúc Trung Thu">
+      <canvas id="bg" aria-hidden="true"></canvas>
+
+      <!-- Moon with music icon -->
+      <div id="moon" aria-hidden="false">
+        <button id="musicIcon" aria-label="Bật/Tắt nhạc">🎵</button>
+      </div>
+
+      <!-- rabbit (CSS animated sprite) -->
+      <div id="rabbit" aria-hidden="true" title="Thỏ Trung Thu">
+        <div class="rabbit-ear ear-left"></div>
+        <div class="rabbit-ear ear-right"></div>
+        <div class="rabbit-head">
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+          <div class="nose"></div>
+        </div>
+        <div class="rabbit-body">
+          <div class="leg leg-front"></div>
+          <div class="leg leg-back"></div>
+        </div>
+      </div>
+
+      <!-- logo appears after rabbit run -->
+      <button id="logoBtn" aria-label="Mở thư" title="Just For You">
+        <div class="logo-circle"><span>For<br>you</span></div>
+      </button>
+
+      <!-- greetings -->
+      <div id="greetings">
+        <h1>Chúc Trung Thu Hạnh Phúc</h1>
+        <h2>Dành riêng cho <span>“Bạn”</span></h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- popup letter (hidden until click) -->
+  <div id="popupOverlay" aria-hidden="true">
+    <div id="envelope" role="dialog" aria-modal="true" aria-label="Bức thư Trung Thu">
+      <div id="envelopeTop" class="envelope-top"></div>
+      <div id="envelopeBody" class="envelope-body">
+        <div class="letter-inner">
+          <h3 class="letter-title">Gửi Bạn</h3>
+          <p class="letter-msg">Chúc bạn một Trung Thu trọn vẹn — an yên, hạnh phúc và nhiều nụ cười.</p>
+
+          <div class="gift-area">
+            <button id="giftBox" aria-label="Mở quà">🎁</button>
+          </div>
+        </div>
+      </div>
+      <button id="closeLetter" aria-label="Đóng thư">✕</button>
+    </div>
+  </div>
+
+  <!-- audio: main track (play/pause via icon) -->
+  <audio id="bgm" src="Anh Sẽ Cho Mình.mp3" loop preload="auto"></audio>
+  <!-- envelope open sound -->
+  <audio id="openSfx" src="open-letter.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
