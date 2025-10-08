@@ -326,3 +326,35 @@ button{background:transparent;border:none;cursor:pointer}
     backdrop-filter: none !important;
   }
 }
+
+/* ✅ Auto fit toàn bộ giao diện cho mọi điện thoại ngang */
+@media screen and (orientation: landscape) {
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    transform-origin: center center;
+  }
+
+  /* Giảm nhẹ toàn bộ scale cho vừa với màn hình nhỏ */
+  @media screen and (max-width: 900px) {
+    #sceneWrapper {
+      transform: scale(0.85);
+      transform-origin: center center;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    #sceneWrapper {
+      transform: scale(0.75);
+      transform-origin: center center;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    #sceneWrapper {
+      transform: scale(0.68);
+      transform-origin: center center;
+    }
+  }
+}
