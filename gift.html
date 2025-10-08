@@ -99,10 +99,20 @@
 </style>
 </head>
 <body>
-  <audio id="giftBgm" src="Anh Sẽ Cho Mình.mp3" autoplay loop></audio>
+ <!-- Nhạc nền cho trang quà -->
+<audio id="giftMusic" src="Anh Se Cho Minh.mp3" autoplay loop preload="auto"></audio>
 <script>
-  const audio = document.getElementById('giftBgm');
-  audio.volume = 0.8; // âm lượng vừa phải
+  // Xử lý để nhạc auto play mượt trên điện thoại
+  document.addEventListener('click', playMusicOnce);
+  document.addEventListener('touchstart', playMusicOnce);
+  function playMusicOnce() {
+    const music = document.getElementById('giftMusic');
+    if (music && music.paused) {
+      music.play().catch(()=>{});
+    }
+    document.removeEventListener('click', playMusicOnce);
+    document.removeEventListener('touchstart', playMusicOnce);
+  }
 </script>
 
   <div class="wrap">
