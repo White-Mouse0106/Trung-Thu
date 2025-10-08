@@ -1,4 +1,8 @@
-/* ===== WISHES ===== */
+window.onload = () => {
+  document.getElementById('loader').style.opacity = '0';
+setTimeout(() => document.getElementById('loader').remove(), 600);
+
+  /* ===== WISHES ===== */
 const wishes = [
   "Gửi đến bạn — người đã vô tình bước vào thế giới nhỏ của mình 💫",
   "Trung Thu này, mình chỉ muốn nói: Cảm ơn vì bạn đã đến 🌕",
@@ -48,7 +52,7 @@ function makeStars(n=120){
     document.body.appendChild(s);
   }
 }
-makeStars(60);
+makeStars(35);
 
 /* ===== CLOUDS ===== */
 function makeClouds(n=6){
@@ -246,3 +250,5 @@ popupOverlay.addEventListener('transitionend', () => {
   if (!popupOverlay.classList.contains('show')) enableAutoRotate();
 });
 
+
+};
