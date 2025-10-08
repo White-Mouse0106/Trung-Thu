@@ -6,94 +6,105 @@
   <title>Quà của Bạn</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      background: radial-gradient(circle at 30% 20%, #2b0038 0%, #080018 80%);
-      font-family: 'Quicksand', sans-serif;
-      color: #fff;
-      overflow: hidden;
-    }
+  html,body{
+    height:100%;margin:0;
+    background:radial-gradient(circle at 20% 20%, #2a0038 0%, #040007 70%);
+    font-family:Quicksand,Arial;color:#fff;overflow:hidden
+  }
+  .wrap{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px;
+  }
+  .card{
+    position:relative;
+    width:100%;
+    max-width:980px;
+    height:100%;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 20px 80px rgba(0,0,0,0.7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+  }
+  .gift-img{
+    position:absolute;
+    inset:0;
+    background:url('gift.jpg') center/cover no-repeat;
+    animation:zoomIn 20s ease-in-out infinite alternate;
+  }
+  @keyframes zoomIn{
+    0%{transform:scale(1)}
+    100%{transform:scale(1.08)}
+  }
 
-    .wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      height: 100vh;
-      padding: 20px;
-      text-align: center;
-    }
+  .overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0.15),rgba(0,0,0,0.55));
+    z-index:1;
+  }
 
-    .card {
-      position: relative;
-      width: min(900px, 95vw);
-      height: min(80vh, 600px);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 0 60px rgba(255, 220, 255, 0.3);
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-    }
+  .text-anim{
+    position:relative;
+    z-index:2;
+    font-family:'Great Vibes',cursive;
+    font-size:34px;
+    color:#ffd78a;
+    text-align:center;
+    text-shadow:0 0 15px rgba(255,220,150,0.9);
+    opacity:0;
+    animation:fadeInText 2s ease 0.8s forwards;
+  }
+  @keyframes fadeInText{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+  }
 
-    .gift-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain; /* ✅ hiển thị đủ hình, không cắt */
-      border-radius: 16px;
-      animation: fadeIn 1.6s ease forwards;
-    }
+  .back{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:3;
+    padding:10px 20px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2);
+    color:#fff;
+    text-decoration:none;
+    font-size:16px;
+    transition:all .3s;
+  }
+  .back:hover{
+    background:rgba(255,255,255,0.2);
+    transform:translateX(-50%) translateY(-3px);
+  }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(1.02); }
-      to { opacity: 1; transform: scale(1); }
+  /* 📱 Responsive mobile */
+  @media (max-width:600px){
+    .text-anim{
+      font-size:24px;
+      padding:0 20px;
     }
-
-    .title {
-      position: absolute;
-      top: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #ffd78a;
-      font-size: 28px;
-      font-family: 'Great Vibes', cursive;
-      text-shadow: 0 0 18px rgba(255, 220, 150, 0.9);
+    .back{
+      font-size:14px;
+      bottom:14px;
     }
-
-    .text-anim {
-      margin-top: 24px;
-      font-family: 'Great Vibes', cursive;
-      font-size: 34px;
-      color: #ffd78a;
-      text-shadow: 0 0 25px rgba(255, 230, 170, 0.7);
-      opacity: 0;
-      animation: showText 2s ease 0.6s forwards;
-    }
-
-    @keyframes showText {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .back {
-      margin-top: 24px;
-      display: inline-block;
-      padding: 10px 22px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .back:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-3px);
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
+  <audio id="giftBgm" src="Anh Sẽ Cho Mình.mp3" autoplay loop></audio>
+<script>
+  const audio = document.getElementById('giftBgm');
+  audio.volume = 0.8; // âm lượng vừa phải
+</script>
+
   <div class="wrap">
     <div class="card">
       <div class="title">Món quà dành riêng cho Bạn</div>
