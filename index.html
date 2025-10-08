@@ -71,6 +71,11 @@
 
   <script src="script.js"></script>
 
-</div>
+  <script>
+window.addEventListener('error', e => {
+  console.error('🔥 Lỗi script:', e.message, e.filename, e.lineno);
+});
+</script>
+
 </body>
 </html>
