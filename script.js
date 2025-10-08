@@ -47,7 +47,7 @@ function makeStars(n=120){
     document.body.appendChild(s);
   }
 }
-makeStars(120);
+makeStars(60);
 
 /* ===== CLOUDS ===== */
 function makeClouds(n=6){
@@ -63,7 +63,7 @@ function makeClouds(n=6){
     document.body.appendChild(c);
   }
 }
-makeClouds(6);
+makeClouds(3);
 
 /* ===== LANTERNS ===== */
 function spawnLantern(){
@@ -117,8 +117,8 @@ function createFlyingImage(src){
   move();
   setTimeout(()=> { if(img.parentNode) img.parentNode.removeChild(img); }, 60000);
 }
-createFlyingImage('img1.jpg');
-createFlyingImage('img2.jpg');
+createFlyingImage('img1.webp');
+createFlyingImage('img2.webp');
 
 /* ===== RABBIT RUN (CSS animation) ===== */
 function startRabbitRun() {
@@ -209,5 +209,22 @@ document.addEventListener('touchend', endDrag);
 /* ===== ESC closes envelope for accessibility ===== */
 document.addEventListener('keydown', e=>{
   if(e.key==='Escape' && popupOverlay.classList.contains('show')) closeEnvelope();
+});
+
+// Thêm vào cuối file script.js
+function disableAutoRotate() {
+  clearTimeout(idleTimer);
+  document.removeEventListener('mousemove', scheduleIdle);
+  document.removeEventListener('touchstart', scheduleIdle);
+  document.removeEventListener('mousedown', scheduleIdle);
+}
+
+function enableAutoRotate() {
+  if (window.innerWidth > 768) scheduleIdle();
+}
+
+popupOverlay.addEventListener('transitionstart', () => disableAutoRotate());
+popupOverlay.addEventListener('transitionend', () => {
+  if (!popupOverlay.classList.contains('show')) enableAutoRotate();
 });
 

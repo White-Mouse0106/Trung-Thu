@@ -277,63 +277,52 @@ button{background:transparent;border:none;cursor:pointer}
   .envelope-top{height:62px}
   .letter-inner{flex-direction:column}
 }
-/* ===== 📱 Responsive cho điện thoại (nhỏ hơn 600px) ===== */
-@media (max-width: 600px) {
-  #moon {
-    width: 110px;
-    height: 110px;
-    top: 6%;
-    right: 6%;
-  }
-
-  #musicIcon {
-    font-size: 28px;
-  }
-
-  #rabbit {
-    width: 70px;
-    height: 56px;
-    bottom: 8%;
-  }
-
+/* ===== MOBILE FIX (Dưới 768px) ===== */
+@media (max-width: 768px) {
   #greetings h1 {
-    font-size: 36px;
+    font-size: 40px;
   }
-
   #greetings h2 {
     font-size: 16px;
   }
-
+  #moon {
+    width: 120px;
+    height: 120px;
+    top: 6%;
+    right: 6%;
+  }
+  #rabbit {
+    width: 80px;
+    height: 64px;
+    bottom: 10%;
+  }
   #logoBtn {
-    width: 58px;
-    height: 58px;
-    top: 12px;
-    left: 12px;
+    width: 56px;
+    height: 56px;
   }
-  .logo-circle {
-    width: 52px;
-    height: 52px;
-    font-size: 13px;
+  .logo-circle span {
+    font-size: 12px;
+    line-height: 1.1;
   }
-
-  /* Phong bì / bức thư */s
+  /* Bức thư hiển thị đẹp hơn */
   #envelope {
     width: 90vw;
   }
-  .envelope-body {
-    padding: 18px;
-  }
   .letter-inner {
     flex-direction: column;
-    gap: 12px;
+    text-align: center;
   }
   .gift-area {
-    width: 200px;
-    height: 130px;
+    width: 100%;
+    height: 140px;
   }
   #giftBox {
-    font-size: 42px;
+    font-size: 48px;
   }
 }
-
-/* gift page link style or other global small tweaks kept in gift page file */
+/* ===== TẮT HIỆU ỨNG MỜ NỀN TRÊN MOBILE ===== */
+@media (max-width: 768px) {
+  #logoBtn {
+    backdrop-filter: none !important;
+  }
+}
