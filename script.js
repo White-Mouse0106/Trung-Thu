@@ -1,12 +1,4 @@
 window.onload = () => {
-window.addEventListener("load", () => {
-  popupOverlay.classList.remove("show");
-  popupOverlay.setAttribute("aria-hidden", "true");
-  envelope.classList.remove("envelope-open");
-  logoBtn.classList.remove("visible");
-  rabbit.style.opacity = 0;
-});
-
 function startScene() {
   makeStars(60);
   makeClouds(3);
