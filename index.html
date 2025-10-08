@@ -70,5 +70,78 @@
   <audio id="openSfx" src="open-letter.mp3" preload="auto"></audio>
 
   <script src="script.js"></script>
+
+  <!-- ===== POPUP XOAY MÀN HÌNH ===== -->
+<div id="orientationNotice" class="notice">
+  <div class="notice-box">
+    <h2>🌕 Vui lòng xoay ngang màn hình</h2>
+    <p>Để thưởng thức trọn vẹn món quà Trung Thu nhé 💝</p>
+  </div>
+</div>
+
+<script>
+  const notice = document.getElementById('orientationNotice');
+  const mainContent = document.getElementById('sceneWrapper');
+
+  function checkOrientation() {
+    // Nếu chiều cao > chiều rộng => đang dọc
+    if (window.innerHeight > window.innerWidth && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+      notice.style.display = 'flex';
+      mainContent.style.filter = 'blur(10px)';
+      mainContent.style.pointerEvents = 'none';
+    } else {
+      notice.style.display = 'none';
+      mainContent.style.filter = 'none';
+      mainContent.style.pointerEvents = 'auto';
+    }
+  }
+
+  window.addEventListener('resize', checkOrientation);
+  window.addEventListener('orientationchange', checkOrientation);
+  document.addEventListener('DOMContentLoaded', checkOrientation);
+</script>
+
+<style>
+  /* ===== STYLE POPUP XOAY NGANG ===== */
+  #orientationNotice {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 0, 20, 0.9);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fadeIn 0.6s ease;
+  }
+  .notice-box {
+    background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 18px;
+    padding: 30px 25px;
+    width: 80%;
+    max-width: 380px;
+    box-shadow: 0 0 25px rgba(255, 200, 255, 0.3);
+  }
+  .notice-box h2 {
+    font-family: 'Great Vibes', cursive;
+    color: #ffd78a;
+    margin-bottom: 12px;
+    font-size: 26px;
+    text-shadow: 0 0 15px rgba(255,220,150,0.8);
+  }
+  .notice-box p {
+    font-size: 16px;
+    color: #ffeef9;
+    line-height: 1.5;
+    text-shadow: 0 0 10px rgba(255,200,240,0.4);
+  }
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
+
 </body>
 </html>
