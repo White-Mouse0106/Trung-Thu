@@ -1,21 +1,22 @@
 /* ===== WISHES ===== */
 const wishes = [
-  "Trung Thu vui vẻ nhé Bạn!",
-  "Mong Bạn luôn mỉm cười như ánh trăng đêm rằm.",
-  "Cảm ơn vì tất cả, chúc Trung Thu an yên.",
-  "Luôn vui vẻ em nhé!",
-  "Mãi yêu em ❤️",
-  "Yêu em rất nhiều!",
-  "Mãi một tình yêu.",
-  "Trăng rằm sáng, lòng người cũng sáng.",
-  "Cầu mong hạnh phúc luôn bên em.",
-  "Bánh nướng trà thơm, tình càng đậm.",
-  "Mong chúng ta mãi bên nhau như trăng và sao.",
-  "Cảm ơn vì em đã đến.",
-  "Trung Thu này, mong em hạnh phúc.",
-  "Luôn tỏa sáng như ánh trăng vàng.",
-  "Mọi điều tốt đẹp sẽ đến với em."
+  "Gửi đến bạn — người đã vô tình bước vào thế giới nhỏ của mình 💫",
+  "Trung Thu này, mình chỉ muốn nói: Cảm ơn vì bạn đã đến 🌕",
+  "Dù chúng ta chỉ quen nhau qua màn hình nhỏ, nhưng mình vẫn thấy ấm áp lắm 💌",
+  "Mình không biết tương lai ra sao, chỉ mong hôm nay bạn thật vui 😊",
+  "Mong nụ cười của bạn luôn sáng như ánh trăng đêm rằm ✨",
+  "Nếu có điều ước, mình ước được gặp bạn một lần ngoài đời 💝",
+  "Bạn biết không? Mỗi khi nhắn tin với bạn, mình lại thấy lòng nhẹ hơn 🌸",
+  "Trung Thu này, không bánh, không đèn, chỉ có món quà nhỏ mình dành cho bạn 🎁",
+  "Mình không giỏi nói lời hoa mỹ, nhưng thật lòng rất quý bạn 💖",
+  "Mong bạn luôn bình an, luôn vui, và luôn là chính mình 🌷",
+  "Khoảnh khắc bạn add mình, có lẽ là món quà Trung Thu sớm nhất năm nay 🌙",
+  "Cảm ơn bạn đã khiến mình tin rằng, đôi khi gặp nhau cũng là một cái duyên 💫",
+  "Chúc bạn một Trung Thu an yên, đầy ắp yêu thương và nụ cười 💞",
+  "Nếu bạn thấy web này, thì đó là cả tấm lòng nhỏ mình gửi đến bạn 🌠",
+  "Trung Thu này, mình không mong gì hơn — chỉ mong bạn biết rằng, mình thật sự trân quý bạn ❤️"
 ];
+
 
 /* ===== DOM refs ===== */
 const container = document.getElementById('container');
