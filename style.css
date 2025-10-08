@@ -458,3 +458,14 @@ button{background:transparent;border:none;cursor:pointer}
   margin-bottom: 14px;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* Hiệu ứng nghiêng nhẹ tự động, thay cho xoay 360 */
+#sceneWrapper {
+  animation: slowTilt 14s ease-in-out infinite alternate;
+}
+
+@keyframes slowTilt {
+  0% { transform: rotateX(2deg) rotateY(3deg); }
+  50% { transform: rotateX(-2deg) rotateY(-3deg); }
+  100% { transform: rotateX(2deg) rotateY(3deg); }
+}

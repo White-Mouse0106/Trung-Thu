@@ -224,33 +224,6 @@ musicIcon.addEventListener('click', async ()=>{
   }
 });
 
-/* ===== 3D rotate by drag/touch ===== */
-let dragging=false, prevX=0, prevY=0, rotX=0, rotY=0;
-function startDrag(e){
-  dragging=true;
-  prevX = e.touches ? e.touches[0].clientX : e.clientX;
-  prevY = e.touches ? e.touches[0].clientY : e.clientY;
-  document.body.style.cursor='grabbing';
-}
-function moveDrag(e){
-  if(!dragging) return;
-  const cx = e.touches ? e.touches[0].clientX : e.clientX;
-  const cy = e.touches ? e.touches[0].clientY : e.clientY;
-  const dx = cx - prevX, dy = cy - prevY;
-  rotY += dx * 0.18;
-  rotX -= dy * 0.14;
-  rotX = Math.max(Math.min(rotX, 30), -30);
-  sceneWrapper.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-  prevX = cx; prevY = cy;
-}
-function endDrag(){ dragging=false; document.body.style.cursor=''; }
-document.addEventListener('mousedown', startDrag);
-document.addEventListener('mousemove', moveDrag);
-document.addEventListener('mouseup', endDrag);
-document.addEventListener('touchstart', startDrag, {passive:true});
-document.addEventListener('touchmove', moveDrag, {passive:true});
-document.addEventListener('touchend', endDrag);
-
 /* ===== ESC closes envelope for accessibility ===== */
 document.addEventListener('keydown', e=>{
   if(e.key==='Escape' && popupOverlay.classList.contains('show')) closeEnvelope();
